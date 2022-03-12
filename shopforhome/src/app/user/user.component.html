@@ -1,0 +1,105 @@
+<hr/>
+<div class="content">
+    <h3 align="center">Hii !! User want to be Login or Register</h3>
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <h3 style="color: antiquewhite;">User Login</h3>
+                <br>
+                <br>
+
+
+                <form [formGroup]="UserLoginReference" (ngSubmit)="userLogin">
+                    <div class="form-group">
+                        <label style="color: antiquewhite;">Email: </label>
+                        <input type="email" class="form-control" formControlName="useremail" /><br/>
+                        <div *ngIf="UserLoginReference.controls['useremail'].invalid && 
+        (UserLoginReference.controls['useremail'].dirty || UserLoginReference.controls['useremail'].touched)">
+                            <span [hidden]="!UserLoginReference.controls['useremail'].errors?.['required']" style="color:rgb(0, 46, 250)">
+            
+                    Emali ID should be Required 
+            </span>
+                            <span [hidden]="!UserLoginReference.controls['useremail'].errors?.['pattern']" style="color:rgb(0, 46,250)
+                  It must be match with pattern (alphabets + numbers + @gmail.com)
+            </span>
+            </div>
+            </div>
+            <div class=" form-group ">
+            <label style="color: antiquewhite; ">password:</label>
+            <input type="password " class="form-control " formControlName ="password "/><br/>
+            <div *ngIf="UserLoginReference.controls[ 'password'].invalid && (UserLoginReference.controls[ 'password'].dirty || UserLoginReference.controls[ 'password'].touched) ">
+                <span [hidden]="!UserLoginReference.controls[ 'password'].errors?.[ 'required'] " style="color:rgb(43, 79, 179) ">
+                        Password should be required
+                </span>
+                <span [hidden]="!UserLoginReference.controls[ 'password'].errors?.[ 'minlength'] " style="color:rgb(28, 77, 182) ">
+                    Atleast Contains 6 characters
+                </span>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Contact: </label>
+                        <input type="tel " class="form-control " formControlName="contact " /><br/>
+                        <div *ngIf="UserRegisterReference.controls[ 'contact'].invalid && (UserRegisterReference.controls[ 'contact'].dirty || UserRegisterReference.controls[ 'contact'].touched) ">
+                            <span [hidden]="!UserRegisterReference.controls[ 'contact'].errors?.[ 'required'] " style="color:rgb(108, 86, 189) ">
+                Contact should be Required 
+        </span>
+                            <span [hidden]="!UserRegisterReference.controls[ 'contact'].errors?.[ 'maxlength'] " style="color:rgb(66, 33, 128) ">
+            It must be 10 numbers only
+         </span>
+                            <span [hidden]="!UserRegisterReference.controls[ 'contact'].errors?.[ 'minlength'] " style="color:rgb(90, 36, 179) ">
+            It must be 10 numbers only
+         </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Gender: </label>
+                        <input type="text " class="form-control " formControlName="gender " /><br/>
+                        <div *ngIf="UserRegisterReference.controls[ 'gender'].invalid && (UserRegisterReference.controls[ 'gender'].dirty || UserRegRef.controls[ 'gender'].touched) ">
+                            <span [hidden]="!UserRegisterReference.controls[ 'gender'].errors?.[ 'required'] " style="color:rgb(79, 39, 124) ">
+                Gender should be Required 
+        </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Address: </label>
+                        <input type="text " class="form-control " formControlName="address " /><br/>
+                        <div *ngIf="UserRegisterReference.controls[ 'address'].invalid && (UserRegisterReference.controls[ 'address'].dirty || UserRegisterReference.controls[ 'address'].touched) ">
+                            <span [hidden]="!UserRegRef.controls[ 'address'].errors?.[ 'required'] " style="color:rgb(53, 20, 172) ">
+                Address should be Required 
+        </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>City: </label>
+                        <input type="text " class="form-control " formControlName="city " /><br/>
+                        <div *ngIf="UserRegisterReference.controls[ 'city'].invalid && (UserRegisterReference.controls[ 'city'].dirty || UserRegisterReference.controls[ 'city'].touched) ">
+                            <span [hidden]="!UserRegisterReference.controls[ 'city'].errors?.[ 'required'] " style="color:rgb(33, 26, 43) ">
+                City should be Required 
+        </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>State: </label>
+                        <input type="text " class="form-control " formControlName="state " /><br/>
+                        <div *ngIf="UserRegisterReference.controls[ 'state'].invalid && (UserRegisterReference.controls[ 'state'].dirty || UserRegRef.controls[ 'state'].touched) ">
+                            <span [hidden]="!UserRegRef.controls[ 'state'].errors?.[ 'required'] " style="color:rgb(48, 9, 73) ">
+                State should be  Required 
+        </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <input type="submit " class="btn btn-dark " value="Register " [disabled]="!UserRegisterReference.valid " /> &nbsp;
+
+
+                        <input type="reset " class="btn btn-dark " value="Reset " />
+                    </div>
+                </form>
+
+                <br/>
+                <span style="color: rgb(220, 245, 226); "> {{RegUser}} </span>
+            </div>
+        </div>
+    </div>
+</div>
