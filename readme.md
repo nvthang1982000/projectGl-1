@@ -1,3 +1,3 @@
-#Project database diagrams
-![alt text](https://github.com/alta1212/projectGl/blob/img/diagrams.png?raw=true)
+#Project database diagrams<br />
+![alt text](https://raw.githubusercontent.com/alta1212/projectGl/main/img/diagrams.png)<br />
 #For swagger visit /swagger-ui.html
