@@ -1,1 +1,21 @@
 <p>orders works!</p>
+<br>
+<hr>
+<div align="right"><input type="button"  class="btn btn-primary" value="logout" (click)="userlogout()"/>&nbsp; &nbsp;
+<input type="button"  class="btn btn-primary" value="Home" (click)="home()"/>
+<hr>
+<h2 align="center" style="color: salmon;">Your Orders, {{username}}</h2>
+<hr>
+</div>
+<ul>
+    <li *ngFor="let order of orders.productOrders">
+        {{ order.product.pname }} - &#8377;{{ order.product.price }} x {{ order.quantity}} pcs.
+    </li>
+</ul>
+<h3 class="text-right">Total amount: &#8377;{{ total }}</h3>
+
+<button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
+
+<div class="alert alert-success" role="alert" *ngIf="paid">
+    <strong>Congratulation!</strong> You successfully made the order.
+</div>

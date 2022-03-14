@@ -8,7 +8,7 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { OrdersComponent } from './ecommerce/orders/orders.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
-import { ProductsshoppingCartComponent } from './ecommerce/productsshopping-cart/productsshopping-cart.component';
+//import { ProductsshoppingCartComponent } from './ecommerce/productsshopping-cart/productsshopping-cart.component';
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { AdminOperationComponent } from './admin-operation/admin-operation.component';
 import { SearchComponent } from './search/search.component';
@@ -26,7 +26,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     EcommerceComponent,
     OrdersComponent,
     ProductsComponent,
-    ProductsshoppingCartComponent,
+    
     ShoppingCartComponent,
     AdminOperationComponent,
     SearchComponent,
