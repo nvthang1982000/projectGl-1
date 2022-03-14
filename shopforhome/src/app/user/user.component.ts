@@ -28,14 +28,15 @@ export class UserComponent implements OnInit {
   userpw : new FormControl("",[Validators.required,Validators.minLength(6)]),
   userun : new FormControl("",[Validators.required])
   })
+  user: any;
 
-  constructor(public user:UserService,public route:Router) { }
+  constructor(public service:UserService, public router: Router) { }
 
   ngOnInit(): void {
   }
 
   userLogin(): void{
-    this.user.userSignUp(this.UserRegisterReference.value).subscribe(result=>this.RegUser=result,err=>console.log(err),()=>console.log("Register User"));
+    this.user.userSignUp(this.UserRegisterReference.value).subscribe((result: string)=>this.RegUser=result,(err: any)=>console.log(err),()=>console.log("Register User"));
     this.UserRegisterReference.reset();
   }
 
