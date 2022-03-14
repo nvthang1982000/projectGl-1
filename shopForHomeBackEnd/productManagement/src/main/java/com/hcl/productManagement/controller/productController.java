@@ -20,6 +20,17 @@ public class productController {
         
         return productService.getAllproduct();
     }
+    @GetMapping("product/{id}")
+    public List<product> productDetail(@PathVariable("id") Integer  id) {
+        
+        return productService.getProductDetail(id);
+    }
 
+    @GetMapping("product/category/{id}")
+    public List<product> productByCategory(@PathVariable("id") Integer  id) {
+        
+        return productService.getProductByCategpry(id);
+    }
+    
 
 }

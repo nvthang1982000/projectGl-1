@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class supplier {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_Supplier;
     private String Sup_name;
     private String Sup_email;

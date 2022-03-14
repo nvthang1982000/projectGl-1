@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class product_categories {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int ProductID_pro;
     private int CategoriesID_Cat;

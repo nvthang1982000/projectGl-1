@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class admin {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_ad ;
     private String Ad_name ;
     private String Ad_email;

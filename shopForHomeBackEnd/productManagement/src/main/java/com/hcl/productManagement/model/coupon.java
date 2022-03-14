@@ -3,7 +3,7 @@ import javax.persistence.*;
 @Entity
 public class coupon {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_coupon;
     private int Discount;
 

@@ -3,7 +3,7 @@ import javax.persistence.*;
 @Entity
 public class image {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
     private String Path;
     private int ProductID_pro;
