@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Userservice } from '../user.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -19,14 +19,14 @@ export class UserComponent implements OnInit {
   })
 
   UserRegisterReference = new FormGroup({
-  username: new FormControl("",[Validators.required,Validators.minLength(6)]),
-  useremail:new FormControl("",[Validators.required,Validators.pattern("\[a-z]+[0-9]+@gmail.com")]),
-  password : new FormControl("",[Validators.required,Validators.minLength(6)]),
-  contact : new FormControl("",[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
-  gender : new FormControl("",[Validators.required]),
-  address : new FormControl("",[Validators.required]),
-  city : new FormControl("",[Validators.required]),
-  state : new FormControl("",[Validators.required])
+  userName: new FormControl("",[Validators.required,Validators.minLength(6)]),
+  userAddress:new FormControl("",[Validators.required,Validators.minLength(6)]),
+  useremail : new FormControl("",[Validators.required,Validators.pattern("\[a-z]+[0-9]+@gmail.com")]),
+  userphone : new FormControl("",[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+  img : new FormControl("",[Validators.required]),
+  token: new FormControl("",[Validators.required]),
+  userpw : new FormControl("",[Validators.required,Validators.minLength(6)]),
+  userun : new FormControl("",[Validators.required])
   })
 
   constructor(public user:UserService,public route:Router) { }

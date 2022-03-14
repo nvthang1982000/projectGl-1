@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +10,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopforhome';
+  flag:boolean=true;
+  inbound:boolean=true;
+  constructor(public route:Router){}
+
+  ChangeNav():void{
+    this.flag = false;
+    this.route.navigate(["useractivity"]);
+
+  }
+  ChangeNavAd():void{
+    this.flag = false;
+    this.route.navigate(["adminactivity"]);
+
+  }
+}
+
 }

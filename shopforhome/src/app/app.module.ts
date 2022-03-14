@@ -3,20 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
+
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { OrdersComponent } from './ecommerce/orders/orders.component';
 import { ProductsComponent } from './ecommerce/products/products.component';
-import { ProductsshoppingCartComponent } from './ecommerce/productsshopping-cart/productsshopping-cart.component';
+<<<<<<< HEAD
+
+=======
+//import { ProductsshoppingCartComponent } from './ecommerce/productsshopping-cart/productsshopping-cart.component';
+>>>>>>> 9699c45ba73f0399eb3c8afd4ae7c53e674b3b9c
 import { ShoppingCartComponent } from './ecommerce/shopping-cart/shopping-cart.component';
 import { AdminOperationComponent } from './admin-operation/admin-operation.component';
 import { SearchComponent } from './search/search.component';
-import { StockReportComponent } from './stock-report/stock-report.component';
-=======
+import { StockReportComponent } from './stock-report/stock-report.component;
 import { UserComponent } from './user/user.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
->>>>>>> a430fe85719205497ed12fafd6ffc9a0e4c2eafe
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
     EcommerceComponent,
     OrdersComponent,
     ProductsComponent,
-    ProductsshoppingCartComponent,
+    
     ShoppingCartComponent,
     AdminOperationComponent,
     SearchComponent,
@@ -34,7 +37,7 @@ import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 =======
     UserComponent,
     UserHomepageComponent
->>>>>>> a430fe85719205497ed12fafd6ffc9a0e4c2eafe
+
   ],
   imports: [
     BrowserModule,
