@@ -3,7 +3,7 @@ import javax.persistence.*;
 @Entity
 public class bill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Bill_ID;
     private int ProductID_pro;
     private int Quantity;

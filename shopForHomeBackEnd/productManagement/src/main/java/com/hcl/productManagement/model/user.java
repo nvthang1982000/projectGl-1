@@ -5,69 +5,107 @@ import javax.persistence.*;
 @Entity
 public class user {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_user;
-    private String User_name;
-    private String User_address;
-    private String User_email;
-    private String User_phone;
-    private String User_UN;
-    private String User_PW;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID_user")
+    private int idUser;
+    @Column(name = "User_name")
+    private String userName;
+    @Column(name = "User_address")
+    private String userAddress;
+    @Column(name = "User_email")
+    private String userEmail;
+    @Column(name = "User_phone")
+    private String userPhone;
+    @Column(name = "User_UN")
+    private String un;
+    @Column(name = "User_PW")
+    private String pw;
+    @Column(name = "User_img")
+    private String img;
 
-    public int getID_user() {
-        return this.ID_user;
+    public String getImg() {
+        return this.img;
     }
 
-    public void setID_user(int ID_user) {
-        this.ID_user = ID_user;
+    public void setImg(String img) {
+        this.img = img;
+    }
+   
+   
+    public int getIdUser() {
+        return this.idUser;
     }
 
-    public String getUser_name() {
-        return this.User_name;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public void setUser_name(String User_name) {
-        this.User_name = User_name;
+
+    public String getUserName() {
+        return this.userName;
     }
 
-    public String getUser_address() {
-        return this.User_address;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setUser_address(String User_address) {
-        this.User_address = User_address;
+
+    public String getUserAddress() {
+        return this.userAddress;
     }
 
-    public String getUser_email() {
-        return this.User_email;
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
     }
 
-    public void setUser_email(String User_email) {
-        this.User_email = User_email;
+
+    public String getUserEmail() {
+        return this.userEmail;
     }
 
-    public String getUser_phone() {
-        return this.User_phone;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public void setUser_phone(String User_phone) {
-        this.User_phone = User_phone;
+
+
+    public String getUserPhone() {
+        return this.userPhone;
     }
 
-    public String getUser_UN() {
-        return this.User_UN;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public void setUser_UN(String User_UN) {
-        this.User_UN = User_UN;
+
+
+    public String getUserUn() {
+        return this.un;
     }
 
-    public String getUser_PW() {
-        return this.User_PW;
+    public void setUserUn(String userUN) {
+        this.un = userUN;
     }
 
-    public void setUser_PW(String User_PW) {
-        this.User_PW = User_PW;
+   
+    public String getUserPW() {
+        return this.pw;
     }
+
+    public void setUserPW(String userPW) {
+        this.pw = userPW;
+    }
+
+    @Transient
+    private String token;
+
+    public String getToken() {
+        return this.token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
 
 }

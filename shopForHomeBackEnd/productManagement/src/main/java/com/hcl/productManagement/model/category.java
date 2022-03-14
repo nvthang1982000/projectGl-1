@@ -3,7 +3,7 @@ import javax.persistence.*;
 @Entity
 public class category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_cat;
     private String Gruop;
 

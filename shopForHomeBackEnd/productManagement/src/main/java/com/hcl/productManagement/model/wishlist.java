@@ -5,9 +5,19 @@ import javax.persistence.*;
 @Entity
 public class wishlist {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ID;
+
+    public int getID() {
+        return this.ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     private int ProductID_pro;
+    @Column(name="idUser")
     private int userid;
 
     public int getProductID_pro() {

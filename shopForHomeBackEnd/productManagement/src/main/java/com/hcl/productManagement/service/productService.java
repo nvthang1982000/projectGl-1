@@ -18,5 +18,17 @@ public class productService {
         //TODO-get all product
             return null;
     }
+
+    public List<product> getProductDetail(Integer id) {
+        //TODO-get product detail
+
+        return null;
+    }
+
+    public List<product> getProductByCategpry(Integer id) {
+        //TODO-get product by category
+
+        return null;
+    }
     
 }

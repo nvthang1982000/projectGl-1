@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class price {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID_Price;
     private int ProductID_pro;
     private int Price_af_dis;
