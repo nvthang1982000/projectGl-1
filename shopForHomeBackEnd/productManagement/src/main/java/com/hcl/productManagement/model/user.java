@@ -20,7 +20,7 @@ public class user {
     private String un;
     @Column(name = "User_PW")
     private String pw;
-    @Column(name = "User_img")
+    @Column(name = "User_image")
     private String img;
 
     public String getImg() {
