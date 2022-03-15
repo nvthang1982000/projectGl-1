@@ -47,7 +47,7 @@ public class userController {
         { 
             String uuid = UUID.randomUUID().toString();
             String filename = uuid+"."+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-            sysService.uploadFile(file,"product/"+filename);
+            sysService.uploadFile(file,"user/"+filename);
             user.setImg(filename);
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             user.setUserPW(bCryptPasswordEncoder.encode(user.getUserPW()));
@@ -57,5 +57,12 @@ public class userController {
         }
 
         return null;
+    }
+
+    //create token for debug
+    @GetMapping("token")
+    public String to()
+    {
+        return jwtTokenUtil.generateToken("1");
     }
 }
