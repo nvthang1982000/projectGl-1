@@ -34,7 +34,7 @@ export class UserOperationComponent implements OnInit {
   })
 
   constructor(public usSer:UserServiceService, public route:Router,public fb :FormService) { }
-  username;
+  username: any;
   ngOnInit(): void {
   }
 

@@ -1,0 +1,112 @@
+<hr/>
+<hr>
+<div class="content">
+    <h3 align="center">Hey!! Admin want to Login or Register</h3>
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+    
+         <h4 style="color: aliceblue;">Admin Login</h4>
+         <br>
+         <br>
+
+         <form [formGroup]="LoginRef" (ngSubmit)="adminLogin()">
+            <div class="form-group">
+        <label style="color: aliceblue;">Email: </label><br>
+        <input type="text" formControlName="email" /><br/>
+        <div *ngIf="LoginRef.controls['email'].invalid && 
+        (LoginRef.controls['email'].dirty || LoginRef.controls['email'].touched)">
+            <span [hidden]="!LoginRef.controls['email'].errors?.['required']" style="color:rgb(51, 255, 0)">
+                    Email ID is required
+            </span>
+            <span [hidden]="!LoginRef.controls['email'].errors?.['pattern']" style="color:rgb(179, 255, 0)">
+               Email should be matched like this (alphabets + numbers + @gmail.com)
+            </span>
+        </div>
+            </div>
+            <div class="form-group">
+        <label style="color: aliceblue;">Password: </label><br>
+        <input  type="password" formControlName="password" /><br/>
+        <div *ngIf="LoginRef.controls['password'].invalid && 
+        (LoginRef.controls['password'].dirty || LoginRef.controls['password'].touched)">
+            <span [hidden]="!LoginRef.controls['password'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                    Password is required
+            </span>
+            <span [hidden]="!LoginRef.controls['password'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+               minimum length 6 characters is needed
+            </span>
+        </div>
+            </div>
+            <div class="form-group">
+        <input type="submit" class="btn btn-light" value="Login" [disabled]="!LoginRef.valid"  /> &nbsp;
+        <input type="reset"  class="btn btn-light" value="Reset" />
+            </div>
+        </form>
+    <br/>
+   <span style="color: aliceblue;" > {{Logres}}</span> 
+            </div>
+<hr/>
+
+    <br/><br/>
+    <div class="col-md-6 login-form-2">
+        <div class="login-logo">
+            
+        </div>
+   
+    <h4 style="color: aliceblue;">Admin Register</h4>
+    <br>
+    <br>
+
+    <form [formGroup]="RegRef" (ngSubmit)="adminRegister()">
+        <div class="form-group">
+        <label>Email: </label><br>
+        <input type="email" formControlName="email" /><br/>
+        <div *ngIf="RegRef.controls['email'].invalid && 
+        (RegRef.controls['email'].dirty || RegRef.controls['email'].touched)">
+            <span [hidden]="!RegRef.controls['email'].errors?.['required']" style="color:rgb(166, 255, 0)">
+                    Email ID is required
+            </span>
+            <span [hidden]="!RegRef.controls['email'].errors?.['pattern']" style="color:rgb(217, 255, 0)">
+                Email must be matched with pattern (alphabets + numbers + @gmail.com)
+            </span>
+        </div>
+        </div>
+        <div class="form-group">
+        <label>Password: </label><br>
+        <input  type="password" formControlName="password" /><br/>
+        <div *ngIf="RegRef.controls['password'].invalid && 
+        (RegRef.controls['password'].dirty || RegRef.controls['password'].touched)">
+            <span [hidden]="!RegRef.controls['password'].errors?.['required']" style="color:rgb(166, 255, 0)">
+                    Password is required
+            </span>
+            <span [hidden]="!RegRef.controls['password'].errors?.['minlength']" style="color:rgb(217, 255, 0)">
+                Password must contains atleast 6 characters
+            </span>
+        </div>
+        </div>
+        <div class="form-group">
+        <label>UserName: </label><br>
+        <input type="text" formControlName="username" /><br/>
+        <div *ngIf="RegRef.controls['username'].invalid && 
+        (RegRef.controls['username'].dirty || RegRef.controls['username'].touched)">
+            <span [hidden]="!RegRef.controls['username'].errors?.['required']" style="color:rgb(166, 255, 0)">
+                    UserName is required
+            </span>
+           
+            <span [hidden]="!RegRef.controls['username'].errors?.['minlength']" style="color:rgb(217, 255, 0)">
+                should contains atleast 7 characters
+            </span>
+        </div>
+        </div>
+        <div class="form-group">
+        <input type="submit"  class="btn btn-dark" value="Register" [disabled]="!RegRef.valid"/> &nbsp;
+        <input type="reset"  class="btn btn-dark" value="Reset" />
+        </div>
+        </form>
+
+        <br/>
+       <span style="color: beige;"> {{Regres}} </span>
+    </div>
+        </div>
+    </div>
+</div>
