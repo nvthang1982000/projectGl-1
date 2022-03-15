@@ -36,7 +36,7 @@ export class AdminHomepageComponent implements OnInit {
   pname:string="";
   pdesc:string="";
   pimage:string="";
-  constructor(public route:Router,public UsServ:UserService,public prodSer:ProductService) { }
+  constructor(public route:Router,public Userservice:UserService,public prodSer:ProductService) { }
 
   ngOnInit(): void {
     let res = sessionStorage.getItem("adname");
@@ -56,18 +56,18 @@ export class AdminHomepageComponent implements OnInit {
    this.route.navigate(["stockreport"])
  }
  getUsers(): void{
-  this.UsServ.getAllUsers().subscribe(res=>this.retrieveUsers=res);
+  this.UsServ.getAllUsers().subscribe((res: UserEntity[])=>this.retrieveUsers=res);
 }
 
 storeUser(UserRef:NgForm){
   
-  this.UsServ.storeUser(UserRef.value).subscribe(res=>this.storeUs=res,error=>console.log(error),()=>this.getUsers());  
+  this.UsServ.storeUser(UserRef.value).subscribe((res: string)=>this.storeUs=res,(error: any)=>console.log(error),()=>this.getUsers());  
   UserRef.reset();
 }
 deleteUser(pid:number){
   
   this.UsServ.deleteUserInfo(pid).
-  subscribe(res=>this.deleteUs=res,error=>console.log(error),()=>this.getUsers());
+  subscribe((res: string)=>this.deleteUs=res,(error: any)=>console.log(error),()=>this.getUsers());
 }
 
 updateUser(user:UserEntity){
@@ -84,8 +84,8 @@ updateUser(user:UserEntity){
 
 updateUserDetails() {
   let user ={"id":this.uid,"userfullname":this.userfullname,"contact":this.contact,"gender":this.gender,"address":this.address,"city":this.city,"state":this.state}
-  this.UsServ.updateUserInfo(user).subscribe(result=>this.updateUs=result,
-  error=>console.log(error),
+  this.UsServ.updateUserInfo(user).subscribe((result: string)=>this.updateUs=result,
+    (  error: any)=>console.log(error),
   ()=>{
   this.getUsers();
   this.flag=false;  
@@ -94,19 +94,19 @@ updateUserDetails() {
 
 loadProducts(): void{
   
-  this.prodSer.getAllProducts().subscribe(res=>this.products=res);
+  this.prodSer.getAllProducts().subscribe((res: Product[])=>this.products=res);
 }
 
 storeProduct(productRef:NgForm){
   this.prodSer.storeProductInfo(productRef.value).
-  subscribe(res=>this.storeMsg=res,error=>console.log(error),()=>this.loadProducts());  
+  subscribe((res: string)=>this.storeMsg=res,(error: any)=>console.log(error),()=>this.loadProducts());  
   productRef.reset();
 }
 
 deleteProduct(pid:number){
   //console.log(pid);
   this.prodSer.deleteProductInfo(pid).
-  subscribe(res=>this.deleteMsg=res,error=>console.log(error),()=>this.loadProducts())
+  subscribe((res: string)=>this.deleteMsg=res,(error: any)=>console.log(error),()=>this.loadProducts())
 }
 
 updateProduct(product:Product){
@@ -123,8 +123,8 @@ updateProduct(product:Product){
 updateProductDetails() {
   let product ={"pid":this.pid,"price":this.price,"pname":this.pname,"pimage":this.pimage,"pdesc":this.pdesc,"stocks":this.stocks}
   
-  this.prodSer.updateProductInfo(product).subscribe(result=>this.updateMsg=result,
-  error=>console.log(error),
+  this.prodSer.updateProductInfo(product).subscribe((result: string)=>this.updateMsg=result,
+    (  error: any)=>console.log(error),
   ()=>{
   this.loadProducts();
   this.fl=false;  
