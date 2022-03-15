@@ -1,103 +1,106 @@
-<p>admin-homepage works!</p>
-
 <hr>
-    <h3 align="center" style="color:rgb(79, 75, 116);">Wlcome to admin homepage {{adminname}}</h3>
-    <div align="right"><input type="button" class="btn btn-primary" value="Logout" (click)="adminlogout()"/>
-        &nbsp;&nbsp;&nbsp;
-        <input type="button" class="btn btn-primary"  value="stockDetails" (click)="stockreport()"/>
-    </div>
+<h3 align="center" style="color: dimgrey;">
 
-    <div class="container">
-        <hr>
-        <h3 align="center" style="color: blue;">CRUD on Users</h3>
-        <hr>
-    <div class="col-sm" style="background-color: aliceblue;">
-    <br>
+
+    Welcome to Admin Home Page!! {{adminname}}</h3>
+<div align="right"><input type="button" class="btn btn-primary" value="Logout" (click)="adminlogout()" /> &nbsp;&nbsp;&nbsp;
+    <input type="button" class="btn btn-primary" value="StockDetails" (click)="stockreport()" />
+</div>
+
+
+<div class="container">
+    <br/>
     <hr>
-    <h4 align="center">User creation</h4>
-    <hr><br>
+    <h3 align="center" style="color: salmon;">CRUD on Users</h3>
+    <hr>
+    <div class="col-sm" style="background-color: lightsteelblue;">
 
-    <form #UserRef="ngForm" (ngSubmit)="storeUser(UserRef)" class="form-group">
-        <label>UserName:</label>
-        <input type="text" class="form-control" name="userfullname" ngModel required/><br/>
-        <div *ngIf="UserRef.controls['userfullname'].invalid &&
+        <br>
+        <hr>
+        <h4 align="center">User Creation</h4>
+        <hr><br>
+
+        <form #UserRef="ngForm" (ngSubmit)="storeUser(UserRef)" class="form-group">
+            <label>UserName: </label>
+            <input type="text" class="form-control" name="userfullname" ngModel required/><br/>
+            <div *ngIf="UserRef.controls['userfullname'].invalid && 
             (UserRef.controls['userfullname'].dirty || UserRef.controls['userfullname'].touched)">
-            <span [hidden]="!UserRef.controls['userfullname'].errors?.['required']" style="color: firebrick;">
-                UserName is required
+                <span [hidden]="!UserRef.controls['userfullname'].errors?.['required']" style="color:red">
+                        UserName is required
                 </span>
-                </div>
-
-                <label>Email: </label>
-        <input type="email" class="form-control" name="useremail" ngModel required pattern="[a-z]+[0-9]+@gmail.com"/><br/>
-        <div *ngIf="UserRef.controls['useremail'].invalid && 
+            </div>
+            <label>Email: </label>
+            <input type="email" class="form-control" name="useremail" ngModel required pattern="[a-z]+[0-9]+@gmail.com" /><br/>
+            <div *ngIf="UserRef.controls['useremail'].invalid && 
             (UserRef.controls['useremail'].dirty || UserRef.controls['useremail'].touched)">
-                <span [hidden]="!UserRef.controls['useremail'].errors?.['required']" style="color:rgb(231, 43, 43)">
+                <span [hidden]="!UserRef.controls['useremail'].errors?.['required']" style="color:red">
                         Email ID is required
                 </span>
-                <span [hidden]="!UserRef.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 79, 79)">
+                <span [hidden]="!UserRef.controls['useremail'].errors?.['pattern']" style="color:red">
                     Email Id must matched with pattern (alphabets + numbers + @gmail.com)
             </span>
             </div>
-
             <label>Password: </label>
-        <input type="password" class="form-control" name="password" ngModel required minlength="7"/><br/>
-        <div *ngIf="UserRef.controls['password'].invalid && 
+            <input type="password" class="form-control" name="password" ngModel required minlength="7" /><br/>
+            <div *ngIf="UserRef.controls['password'].invalid && 
             (UserRef.controls['password'].dirty || UserRef.controls['password'].touched)">
-                <span [hidden]="!UserRef.controls['password'].errors?.['required']" style="color:rgb(51, 23, 131)">
+                <span [hidden]="!UserRef.controls['password'].errors?.['required']" style="color:red">
                         Password is required
                 </span>
-                <span [hidden]="!UserRef.controls['password'].errors?.['minlength']" style="color:rgb(55, 0, 255)">
+                <span [hidden]="!UserRef.controls['password'].errors?.['minlength']" style="color:red">
                     should contain atleast 7 characters
             </span>
             </div>
-
             <label>Contact: </label>
-        <input type="number" class="form-control" name="contact" ngModel required/><br/>
-        <label>Gender: </label>
-        <input type="text" class="form-control" name="gender" ngModel required/><br/>
-        <label>Address: </label>
-        <input type="text" class="form-control" name="address" ngModel required/><br/>
-        <label>City: </label>
-        <input type="text" class="form-control" name="city" ngModel required/><br/>
-        <label>State: </label>
-        <input type="text" class="form-control" name="state" ngModel required/><br/>
-        <div class="form-group" align="center">
-        <input type="submit" class="btn btn-primary mr-5" value="Store User" [disabled]="!UserRef.valid"/>
-        <input type="reset" class="btn btn-primary mr-5"/></div>
+            <input type="number" class="form-control" name="contact" ngModel required/><br/>
+            <label>Gender: </label>
+            <input type="text" class="form-control" name="gender" ngModel required/><br/>
+            <label>Address: </label>
+            <input type="text" class="form-control" name="address" ngModel required/><br/>
+            <label>City: </label>
+            <input type="text" class="form-control" name="city" ngModel required/><br/>
+            <label>State: </label>
+            <input type="text" class="form-control" name="state" ngModel required/><br/>
+            <div class="form-group" align="center">
+                <input type="submit" class="btn btn-primary mr-5" value="Store User" [disabled]="!UserRef.valid" />
+                <input type="reset" class="btn btn-primary mr-5" /></div>
 
         </form>
-  
-        <span style="color:rgb(0, 183, 255)">  {{storeUs}}</span>
+
+        <br/>
+        <span style="color:red">  {{storeUs}}</span>
     </div>
+    <br/>
 
     <div *ngIf="flag">
         <br>
-        <div class="col-sm" style="background-color: rgb(202, 194, 195)" >
+        <div class="col-sm" style="background-color: pink">
             <br/>
-         <hr/>   
-         <h4 align="center">User Update</h4>
-         <hr/><br>
-        <form #upUserRef="ngForm" (ngSubmit)="updateUserDetails()" class="form-group" >
-            <label>UserId: </label>
-            <input type="number" class="form-control" name="uid" [(ngModel)]="uid" readonly /><br/>
-            <label>UserFullName: </label>
-            <input type="text" class="form-control" name="userfullname" [(ngModel)]="userfullname" required/><br/>
-            <label>Contact: </label>
-            <input type="number" class="form-control" name="contact" [(ngModel)]="contact" required/><br/>
-            <label>Address: </label>
-            <input type="text" class="form-control" name="address" [(ngModel)]="address" required/><br/>
-            <label>Gender: </label>
-            <input type="text" class="form-control" name="gender" [(ngModel)]="gender" required/><br/>
-            <label>City: </label>
-            <input type="text" class="form-control" name="city" [(ngModel)]="city" required/><br/>
-            <label>State: </label>
-            <input type="text" class="form-control" name="state" [(ngModel)]="state" required/><br/>
-            <div class="form-group" align="center">
-            <input type="submit" class="btn btn-primary mr-5" value="update User" [disabled]="!upUserRef.valid" />
-            <input type="reset" class="btn btn-primary mr-5" value="reset"/></div>
-        </form>
-        <br>
-        <span style="color:rgb(129, 12, 12)">  {{updateUs}}</span>
+            <hr/>
+            <h4 align="center">User Update</h4>
+            <hr/><br>
+            <form #upUserRef="ngForm" (ngSubmit)="updateUserDetails()" class="form-group">
+                <label>UserId: </label>
+                <input type="number" class="form-control" name="uid" [(ngModel)]="uid" readonly /><br/>
+                <label>UserFullName: </label>
+                <input type="text" class="form-control" name="userfullname" [(ngModel)]="userfullname" required/><br/>
+                <label>Contact: </label>
+                <input type="number" class="form-control" name="contact" [(ngModel)]="contact" required/><br/>
+                < <label>Address: </label>
+                    <input type="text" class="form-control" name="address" [(ngModel)]="address" required/>
+                    <br/>
+                    <label>Gender: </label>
+                    <input type="text" class="form-control" name="gender" [(ngModel)]="gender" required/><br/>
+                    <label>City: </label>
+                    <input type="text" class="form-control" name="city" [(ngModel)]="city" required/><br/>
+                    <label>State: </label>
+                    <input type="text" class="form-control" name="state" [(ngModel)]="state" required/><br/>
+                    <div class="form-group" align="center">
+                        <input type="submit" class="btn btn-primary mr-5" value="update User" [disabled]="!upUserRef.valid" />
+                        <input type="reset" class="btn btn-primary mr-5" value="reset" /></div>
+            </form>
+            <br>
+            <span style="color:red">  {{updateUs}}</span>
         </div>
     </div>
 
@@ -117,7 +120,6 @@
             <th>Update User</th>
 
         </tr>
-
         <tr *ngFor="let user of retrieveUsers">
             <td>{{user.id}}</td>
             <td>{{user.userfullname }}</td>
@@ -127,97 +129,106 @@
             <td>{{user.address}}</td>
             <td>{{user.city}}</td>
             <td>{{user.state}}</td>
-            <td><input type="button" value="delete" class="btn btn-danger"  (click)="deleteUser(user.id)" /></td> 
+            <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteUser(user.id)" /></td>
             <td><input type="button" value="update" class="btn btn-success" (click)="updateUser(user)" /></td>
-            
+
         </tr>
     </table>
     <br/>
-    <span style="color:rgb(0, 255, 34)">{{deleteUser}}</span>
+    <span style="color:red">{{deleteUs}}</span>
 </div>
 <br/><br/>
 <hr/>
 
+
+<!----------------CRUD on Products----------------->
+
+
 <div class="container">
-    <h3 align = "center" style="color: rgb(184, 114, 250);">CRUD on Products</h3>
+    <h3 align="center" style="color: salmon;">CRUD on Products</h3>
     <hr>
 
 
     <div class="col-sm" style="background-color: pink">
-        <br><hr>
-            <h4 align="center">Product Creation</h4>
-            <hr><br>
-            <form #productRef="ngForm" class="form-group" (ngSubmit)="storeProduct(productRef)" >
-                <label>Product_Id: </label>
-                <input type="number" class="form-control" name="pid" ngModel required/><br/>
-                <label>Product_Name:</label>
-                <input type="text" class="form-control" name="pname" ngModel required/><br/>
-                <label>Product_Description:</label>
-                <input type="text" class="form-control" name="pdesc" ngModel required/><br/>
-                <label>Product_Price:</label>
-                <input type="number" class="form-control" name="price" ngModel required/><br/>
-                <label>Image URL: </label>
-                <input type="text" class="form-control" name="pimage" ngModel required /><br/>
-                <label>Stocks Available: </label>
-                <input type="number" class="form-control" name="stocks" ngModel required /><br/>
-                <div class="form-group" align="center">
+        <br>
+        <hr>
+        <h4 align="center">Product Creation</h4>
+        <hr><br>
+        <form #productRef="ngForm" class="form-group" (ngSubmit)="storeProduct(productRef)">
+            <label>Product_Id: </label>
+            <input type="number" class="form-control" name="pid" ngModel required/><br/>
+            <label>Product_Name:</label>
+            <input type="text" class="form-control" name="pname" ngModel required/><br/>
+            <label>Product_Description:</label>
+            <input type="text" class="form-control" name="pdesc" ngModel required/><br/>
+            <label>Product_Price:</label>
+            <input type="number" class="form-control" name="price" ngModel required/><br/>
+            <label>Image URL: </label>
+            <input type="text" class="form-control" name="pimage" ngModel required /><br/>
+            <label>Stocks Available: </label>
+            <input type="number" class="form-control" name="stocks" ngModel required /><br/>
+            <div class="form-group" align="center">
                 <input type="submit" class="btn btn-primary mr-5" value="store product" [disabled]="!productRef.valid" />
                 <input type="reset" class="btn btn-primary mr-5" value="reset" /></div>
-            </form>
-            <br/>
-            <span style="color:red">{{storeMsg}}</span> 
-            </div>
+        </form>
+        <br/>
+        <span style="color:red">{{storeMsg}}</span>
+    </div>
 
-            <div *ngIf="fl">
-                <div class="col-sm" style="background-color: powderblue">
-                <br><hr>
-                <h3 align="center">Update Product</h3>
-                <hr><br>
-                <form  #upRef="ngForm" (ngSubmit)="updateProductDetails()" class="form-group">
-                    <label>Product_Id: </label>
-                    <input type="number" class="form-control" name="pid" [(ngModel)]="pid" readonly /><br/>
-                    <label>Product_Price: </label>
-                    <input type="number" class="form-control" name="price" [(ngModel)]="price"required/><br/>
-                    <label>Product Description: </label>
-                    <input type="text" class="form-control" name="pdesc" [(ngModel)]="pdesc" required/><br/>
-                    <label>Product_Image</label>
-                    <input type="text" class="form-control" name="pimage" [(ngModel)]="pimage" required/><br/>
-                    <label>Stocks Available</label>
-                    <input type="number" class="form-control" name="stocks" [(ngModel)]="stocks" required/><br/>
-                    <div class="form-group" align="center">
-                    <input type="submit" class="btn btn-primary mr-5" value="update product" [disabled]="!upRef.valid" />
-                    <input type="reset" class="btn btn-primary mr-5" value="reset"/></div>
-                </form>
-                <br>
-                <span style="color:red">{{updateMsg}}</span>
-                </div>
-            </div>
-
+    <div *ngIf="fl">
+        <div class="col-sm" style="background-color: powderblue">
+            <br>
             <hr>
-            <h4 align="center">Product Details</h4>
-            <table class="table" border="2px">
-                    <tr>
-                        <th>PId</th>
-                        <th>PName</th>
-                        <th>Price</th>
-                        <th>Images</th>
-                        <th>Prod_Description</th>  
-                        <th>Delete Product</th>
-                        <th>Update Product</th>
-                        
-                    </tr>      
-                    
-                    <tr *ngFor="let product of products">
-                        <td>{{product.pid}}</td>
-                        <td>{{product.pname | uppercase}}</td>
-                        <td>{{product.price}}</td>
-                        <td>{{product.pdesc}}</td>
-                       
-                        <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteProduct(product.pid)" /></td> 
-                        <td><input type="button" value="update" class="btn btn-success" (click)="updateProduct(product)" /></td>
-                        
-                    </tr>
-                </table>
-                <br/>
-                <span style="color:red"> {{deleteMsg}}</span>
-            </div>
+            <h3 align="center">Update Product</h3>
+            <hr><br>
+            <form #upRef="ngForm" (ngSubmit)="updateProductDetails()" class="form-group">
+                <label>Product_Id: </label>
+                <input type="number" class="form-control" name="pid" [(ngModel)]="pid" readonly /><br/>
+                <label>Product_Price: </label>
+                <input type="number" class="form-control" name="price" [(ngModel)]="price" required/><br/>
+                <label>Product Description: </label>
+                <input type="text" class="form-control" name="pdesc" [(ngModel)]="pdesc" required/><br/>
+                <label>Product_Image</label>
+                <input type="text" class="form-control" name="pimage" [(ngModel)]="pimage" required/><br/>
+                <label>Stocks Available</label>
+                <input type="number" class="form-control" name="stocks" [(ngModel)]="stocks" required/><br/>
+                <div class="form-group" align="center">
+                    <input type="submit" class="btn btn-primary mr-5" value="update product" [disabled]="!upRef.valid" />
+                    <input type="reset" class="btn btn-primary mr-5" value="reset" /></div>
+            </form>
+            <br>
+            <span style="color:red">{{updateMsg}}</span>
+        </div>
+    </div>
+    <hr>
+    <h4 align="center">Product Details</h4>
+    <table class="table" border="2px">
+        <tr>
+            <th>PId</th>
+            <th>PName</th>
+            <th>Price</th>
+            <th>Images</th>
+            <th>Prod_Description</th>
+
+            <th>Delete Product</th>
+            <th>Update Product</th>
+
+        </tr>
+        <tr *ngFor="let product of products">
+            <td>{{product.pid}}</td>
+            <td>{{product.pname | uppercase}}</td>
+            <td>{{product.price}}</td>
+            <td><img src={{product.pimage}} width="180px" height="210px" /></td>
+            <td>{{product.pdesc}}</td>
+
+            <td><input type="button" value="delete" class="btn btn-danger" (click)="deleteProduct(product.pid)" /></td>
+            <td><input type="button" value="update" class="btn btn-success" (click)="updateProduct(product)" /></td>
+
+        </tr>
+    </table>
+    <br/>
+    <span style="color:red"> {{deleteMsg}}</span>
+</div>
+
+
+<!------------------Bulk upload--------------------------------->

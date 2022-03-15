@@ -19,12 +19,13 @@ export class SearchComponent implements OnInit {
   productsser!: Productsearch[];
   allProducts!: Productsearch[];
 
+  
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     console.log("Hello")
-    this.http.get<Productsearch[]>()
+    this.http.get<Productsearch[]>('http://localhost:')
       .subscribe((data: Productsearch[]) => {
         this.productsser = data;
         this.allProducts = this.productsser;
@@ -34,9 +35,6 @@ export class SearchComponent implements OnInit {
   search(value: string): void {
     
     this.productsser = this.allProducts.filter((val) => val.pname.toLowerCase().includes(value));
-    
+  }
     
   }
-
-
-}

@@ -1,13 +1,12 @@
 export class UserEntity {
     constructor(
-    public iduser:number,
-    public userName:string,
-    public userAddress:string,
-    public userEmail:string,
-    public userphone:number,
-    public img:string,
-    public token:string,
-    public userpw:string,
-    public userun:string
-    ){ }
-}
+        public id:number,
+    public userfullname:string,
+    public useremail:string,
+    public password:string,
+    public contact:number,
+    public gender:string,
+    public address:string,
+    public city:string,
+    public state:string
+    ){ }}

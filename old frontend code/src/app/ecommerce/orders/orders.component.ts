@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import {Subscription} from "rxjs/internal/Subscription";
-
-import { ProductOrders } from 'src/app/product-orders';
-
+import { ProductOrders } from '../../product-orders';
+import { EcommerceService } from '../../ecommerce.service';
 
 @Component({
     selector: 'app-orders',
@@ -54,4 +53,3 @@ export class OrdersComponent implements OnInit {
         this.route.navigate(["userhome"])
       }
 }
-

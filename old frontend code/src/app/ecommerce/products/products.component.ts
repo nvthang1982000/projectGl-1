@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs/internal/Subscription";
-import { ProductOrder } from 'src/app/product-order';
-import { ProductOrders } from 'src/app/product-orders';
-import { Product } from 'src/app/product';
-import { EcommerceService } from 'src/app/ecommerce-service.service';
-
+import { EcommerceService } from '../../ecommerce.service';
+import { Product } from '../../products';
+import { ProductOrders } from '../../product-orders';
+import { ProductOrder } from '../../product-order';
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',

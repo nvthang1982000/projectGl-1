@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-homepage.component.css']
 })
 export class UserHomepageComponent implements OnInit {
-  username:string="";
-
-
-  constructor(public route:Router,public prodSer:) { }
-
+ 
+  constructor(public route:Router,) { }
+  username: any;
   ngOnInit(): void {
   }
-
+  addToCart()
+  {}
+  userlogout()
+  {}
 }
