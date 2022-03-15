@@ -190,7 +190,6 @@ CREATE TABLE `product` (
   `ID_pro` int NOT NULL AUTO_INCREMENT,
   `Pro_name` varchar(200) NOT NULL,
   `Left_Quantity` int NOT NULL,
-  `Price` int NOT NULL,
   `Flag_0_1` varchar(45) DEFAULT NULL,
   `SupplierID_Supplier` int NOT NULL,
   PRIMARY KEY (`ID_pro`)
@@ -203,7 +202,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Ghế nhựa',1000,10000,'',1),(2,'Bàn gỗ',10,1000000,NULL,1),(3,'Đèn treo tường',1000,100000,NULL,1),(4,'Quạt trần',100,10000,NULL,1);
+INSERT INTO `product` VALUES (1,'Ghế nhựa',1000,'',1),(2,'Bàn gỗ',1,NULL,1),(3,'Đèn treo tường',1000,NULL,1),(4,'Quạt trần',100,NULL,1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
