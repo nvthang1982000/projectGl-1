@@ -1,4 +1,4 @@
-package com.hcl.admin.admin_management.config;
+package com.hcl.productManagement.config;
 import java.io.Serializable;
 
 
@@ -55,9 +55,9 @@ public class JwtTokenUtil implements Serializable {
 		return false;
 	}
 
-	public String generateToken(String un) {
+	public String generateToken(String id) {
 		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, un);
+		return doGenerateToken(claims, id);
 	}
 
 	public String generateTokenUser(int id) {

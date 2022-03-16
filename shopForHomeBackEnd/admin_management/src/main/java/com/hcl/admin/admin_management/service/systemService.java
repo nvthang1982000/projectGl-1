@@ -1,10 +1,12 @@
 package com.hcl.admin.admin_management.service;
 
 import com.hcl.admin.admin_management.model.bill;
-import com.hcl.admin.admin_management.rep.billRep;
+import com.hcl.admin.admin_management.model.product;
+import com.hcl.admin.admin_management.rep.*;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +32,8 @@ public class systemService {
   @Autowired
   billRep brep;
 
+  @Autowired
+  productRep pRep;
   private Path rootLocation;
 
   @Value("${mailgun.api-key}")
@@ -73,9 +77,7 @@ public class systemService {
     return null;
   }
 
-  public MultipartFile createReport(String date) {
-    return null;
-  }
+
 
   public ByteArrayInputStream tutorialsToCSV(List<bill> bills) {
 
@@ -101,6 +103,21 @@ public class systemService {
     } catch (IOException e) {
       throw new RuntimeException("fail to import data to CSV file: " + e.getMessage());
     }
+  }
+
+  public List<product> getAllproduct()
+  {
+      List<product> products =new ArrayList<product>();
+      //TO-get product detail
+     for (String[] a : pRep.getAllProduct()) {
+         product p=new product();
+         p.setID_pro(Integer.parseInt(a[0]));
+         p.setPro_name(a[1]);
+         p.setPrice(Integer.parseInt(a[2]));
+         p.setImage(a[3]);
+         products.add(p);
+     } 
+      return products;
   }
 
   public List<bill> getBillBydate(String date) {

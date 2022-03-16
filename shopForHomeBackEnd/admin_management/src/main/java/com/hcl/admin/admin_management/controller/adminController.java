@@ -35,14 +35,15 @@ public class adminController {
     @PostMapping("login")
     public admin login(@RequestBody admin user) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-       
+        System.out.println(bCryptPasswordEncoder.encode("admin")); 
         admin u= sys.login(user);
         if(u!=null)
         {  
             System.out.println(u.getPW());
-            if(bCryptPasswordEncoder.matches( user.getPW(),u.getPW()))
+             if(bCryptPasswordEncoder.matches( user.getPW(),u.getPW()))
+            // if(true)
             {
-                u.setToken(jwtTokenUtil.generateToken(Integer.toString(u.getID_ad())));
+                u.setToken(jwtTokenUtil.generateToken(u.getUN()));
             }
             else
             {
@@ -85,8 +86,7 @@ public class adminController {
         }
     }
 
-
-
+   
     @PostMapping("auth/mail")
     public void mail(@RequestParam("contain") String text,@RequestParam("subject") String subject,@RequestParam("contain")String [] mails)
     {

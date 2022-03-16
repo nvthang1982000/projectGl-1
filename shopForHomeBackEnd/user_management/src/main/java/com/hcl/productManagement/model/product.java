@@ -1,4 +1,4 @@
-package com.hcl.admin.admin_management.model;
+package com.hcl.productManagement.model;
 
 import javax.persistence.*;
 
@@ -13,11 +13,8 @@ public class product {
     private int ID_pro;
     private String Pro_name;
     private int Left_Quantity;
-    @Transient
     private int Price;
-    @Column(name = "Flag_0_1")
     private String Flag;
-    @Column(name = "SupplierID_Supplier")
     private String SupplierID;
     @Transient
     private String image;
@@ -29,6 +26,8 @@ public class product {
     public void setImage(String image) {
         this.image = image;
     }
+
+
     public int getID_pro() {
         return this.ID_pro;
     }
