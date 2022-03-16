@@ -41,14 +41,14 @@ public class userController {
     }
 
     @PostMapping("registers")
-    public user registers( @RequestPart("info") user user ,@RequestParam("file") MultipartFile file) {
+    public user registers(@RequestBody user user) {
 
         if(sys.checkUsername(user.getUserUn()))
         { 
-            String uuid = UUID.randomUUID().toString();
-            String filename = uuid+"."+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-            sysService.uploadFile(file,"user/"+filename);
-            user.setImg(filename);
+            // String uuid = UUID.randomUUID().toString();
+            // String filename = uuid+"."+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+            // sysService.uploadFile(file,"user/"+filename);
+            // user.setImg(filename);
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             user.setUserPW(bCryptPasswordEncoder.encode(user.getUserPW()));
             user.setToken(jwtTokenUtil.generateToken(Integer.toString(sys.create(user).getIdUser())));

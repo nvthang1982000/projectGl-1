@@ -50,19 +50,20 @@ public class adminController {
                 u=null;
             }
         }
-
+        u.setPW(null);//hide pass before return
+        u.setID_ad(0);
         return u;
     }
 
     @PostMapping("auth/create")
-    public admin registers( @RequestPart("info") admin user ,@RequestParam("file") MultipartFile file) {
+    public admin registers( @RequestBody admin user) {
 
         if(sys.checkUsername(user.getUN()))
         { 
-            String uuid = UUID.randomUUID().toString();
-            String filename = uuid+"."+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-            sysService.uploadFile(file,"admin/"+filename);
-            user.setimg(filename);
+            // String uuid = UUID.randomUUID().toString();
+            // String filename = uuid+"."+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+            // sysService.uploadFile(file,"admin/"+filename);
+            // user.setimg(filename);
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             user.setPW(bCryptPasswordEncoder.encode(user.getPW()));
             user.setToken(jwtTokenUtil.generateToken(Integer.toString(sys.create(user).getID_ad())));

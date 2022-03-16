@@ -1,6 +1,7 @@
 package com.hcl.productManagement.model;
 import javax.persistence.*;
 @Entity
+@Table(name="categories")
 public class category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,7 +15,7 @@ import javax.persistence.*;
 
 @NamedQuery(
     name ="product.getAllProductByCategory",
-    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and p.ID_pro in(select ProductID_pro from product_categories where CategoriesID_Cat=:id)and p.Flag_0_1=2   group by ID_pro"
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and p.ID_pro in(select ProductID_pro from product_categories where CategoriesID_Cat=:id)and p.Flag_0_1!=2   group by ID_pro"
 )
 
 @NamedQuery(
