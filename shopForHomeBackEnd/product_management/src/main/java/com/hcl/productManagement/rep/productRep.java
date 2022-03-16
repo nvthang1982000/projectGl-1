@@ -14,6 +14,6 @@ public  interface productRep extends JpaRepository<product, Integer>  {
     
    List<String []> getAllProduct();
    List<String []> getProductDetail(@Param("param") int id);
-   List<String []> search(@Param("Pro_name") String Pro_name);
-   List<String []> getAllProductByCategory(@Param("id") int key);
+   List<String []> search(@Param("key") String key);
+
 }

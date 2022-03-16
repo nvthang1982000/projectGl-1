@@ -5,7 +5,6 @@ import com.hcl.productManagement.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class productService {
     }
 
     public product getProductDetail(int id) {
-        String [] a=rep.getProductDetail(id).get(0);
+        String [] a=rep.getAllProduct().get(0);
         product p=new product();
             p.setID_pro(Integer.parseInt(a[0]));
             p.setPro_name(a[1]);
@@ -49,59 +48,11 @@ public class productService {
 
     }
 
-    public List<product> getProductByCategpry(int id) {
-        List<product> products =new ArrayList<product>();
-        //TO-get product detail
-       for (String[] a : rep.getAllProductByCategory(id)) {
-           product p=new product();
-           p.setID_pro(Integer.parseInt(a[0]));
-           p.setPro_name(a[1]);
-           p.setPrice(Integer.parseInt(a[2]));
-           p.setImage(a[3]);
-           p.setLeft_Quantity(Integer.parseInt(a[4]));
+    public List<product> getProductByCategpry(Integer id) {
+        //TODO-get product by category
 
-           products.add(p);
-       } 
-        return products;
-
+        return null;
     }
-    public void delete(int id)
-    {
-        System.out.println("in");
-
-        product old=rep.findById(id).get();
-    if(old!=null)
-		{
-            System.out.println("has");
-			
-			old.setFlag("2");
-			
-			rep.save(old);
-		}
-	
-    }
-
-
-
-    public void update(int id,product a)
-    {
-        System.out.println("in");
-
-        product old=rep.findById(id).get();
-        if(old!=null)
-		{
-            System.out.println("has");
-			old.setImage(a.getImage());
-            old.setSupplierID(a.getSupplierID());
-            old.setLeft_Quantity(a.getLeft_Quantity());
-			old.setFlag(a.getFlag());
-			
-			rep.save(old);
-		}
-	
-    }
-
-    
     public void create(product p)
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  

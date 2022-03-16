@@ -8,11 +8,13 @@ import { UserOperationComponent } from './user-operation/user-operation.componen
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserOperationComponent,
-    UserHomepageComponent
+    UserHomepageComponent,
+  
   ],
   imports: [
     BrowserModule,

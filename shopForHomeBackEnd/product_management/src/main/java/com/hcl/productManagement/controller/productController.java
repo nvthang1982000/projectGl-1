@@ -28,23 +28,10 @@ public class productController {
         
         return productService.getAllproduct();
     }
-
-    @GetMapping("delete/{id}")
-    public void deletep(@PathVariable("id") int  id) {
-        productService.delete(id);
-       
-    }
     @GetMapping("product/{id}")
     public product productDetail(@PathVariable("id") int  id) {
         
         return productService.getProductDetail(id);
-    }
-
-
-    @PostMapping("product/update/{id}")
-    public void update(@PathVariable("id") int id,@RequestPart("info") product product  ) {
-        
-         productService.update(id,product);
     }
 
     @GetMapping("product/category/{id}")
@@ -54,7 +41,6 @@ public class productController {
     }
     @GetMapping("search")
     public List<product> productDetail(@RequestParam("key")  String key) {
-        System.out.println(key+"ssssssssssssss");
         return sys.SearchProduct(key);
     }
 

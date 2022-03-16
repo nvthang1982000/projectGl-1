@@ -9,9 +9,9 @@
                 <br>
                 <br>
 
-                <form [formGroup]="fb.UserLoginReference" (ngSubmit)="userLogin()">
+                <form [formGroup]="UserLogRef" (ngSubmit)="userLogin()">
                     <div class="form-group">
-                        <label style="color: rgb(75, 142, 201);">Email: </label>
+                        <label style="color: aliceblue;">Email: </label>
                         <input type="email" class="form-control" formControlName="useremail" /><br/>
                         <div *ngIf="UserLogRef.controls['useremail'].invalid && 
                 (UserLogRef.controls['useremail'].dirty || UserLogRef.controls['useremail'].touched)">
@@ -45,7 +45,7 @@
                 </form>
 
                 <br/>
-                <span style="color: rgb(23, 96, 160);"> {{LogUser}}</span>
+                <span style="color: aliceblue;"> {{LogUser}}</span>
             </div>
 
             <hr/>
@@ -54,7 +54,7 @@
 
             <div class="col-md-6 login-form-2">
                 <div class="login-logo">
-                    <img src="https://." alt="" />
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                 </div>
                 <h4>User Register</h4>
                 <br>
@@ -63,48 +63,51 @@
                 <form [formGroup]="UserRegRef" (ngSubmit)="userRegister()">
                     <div class="form-group">
                         <label>UserFullName: </label>
-                        <input type="text" class="form-control" formControlName="userName" /><br/>
-                        <div *ngIf="UserRegRef.controls['userName'].invalid && 
-            (UserRegRef.controls['userName'].dirty || UserRegRef.controls['userName'].touched)">
-                            <span [hidden]="!UserRegRef.controls['userfullname'].errors?.['required']" style="color:rgb(192, 124, 46)">
-                        UserName is Required 
+                        <input type="text" class="form-control" formControlName="userfullname" /><br/>
+                        <div *ngIf="UserRegRef.controls['userfullname'].invalid && 
+            (UserRegRef.controls['userfullname'].dirty || UserRegRef.controls['userfullname'].touched)">
+                            <span [hidden]="!UserRegRef.controls['userfullname'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        UserFullName is Required 
                 </span>
-                            <span [hidden]="!UserRegRef.controls['userName'].errors?.['minlength']" style="color:rgb(212, 122, 18)">
+                            <span [hidden]="!UserRegRef.controls['userfullname'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
                    It must contains atleast 6 characters
                 </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Address: </label>
-                        <input type="text" class="form-control" formControlName="userAddress" /><br/>
-                        <div *ngIf="UserRegRef.controls['userAddress'].invalid && 
-                (UserRegRef.controls['userAddress'].dirty || UserRegRef.controls['userAddress'].touched)">
-                            <span [hidden]="!UserRegRef.controls['address'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Address is Required 
-                    </span>
-
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Email: </label>
                         <input type="email" class="form-control" formControlName="useremail" /><br/>
                         <div *ngIf="UserRegRef.controls['useremail'].invalid && 
-                (UserRegRef.controls['useremail'].dirty || UserRegRef.controls['useremail'].touched)">
+            (UserRegRef.controls['useremail'].dirty || UserRegRef.controls['useremail'].touched)">
                             <span [hidden]="!UserRegRef.controls['useremail'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Emali ID is Required 
-                    </span>
+                        Emali ID is Required 
+                </span>
                             <span [hidden]="!UserRegRef.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 255, 0)">
-                       It must be match with pattern (alphabets + numbers + @gmail.com)
-                    </span>
+                   It must be match with pattern (alphabets + numbers + @gmail.com)
+                </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>phone: </label>
-                        <input type="tel" class="form-control" formControlName="userphone" /><br/>
-                        <div *ngIf="UserRegRef.controls['userphone'].invalid && 
-            (UserRegRef.controls['userphone'].dirty || UserRegRef.controls['userphone'].touched)">
-                            <span [hidden]="!UserRegRef.controls['userphone'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        phone number is Required 
+                        <label>Password: </label>
+                        <input type="password" class="form-control" formControlName="password" /><br/>
+                        <div *ngIf="UserRegRef.controls['password'].invalid && 
+            (UserRegRef.controls['password'].dirty || UserRegRef.controls['password'].touched)">
+                            <span [hidden]="!UserRegRef.controls['password'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        Password is Required 
+                </span>
+                            <span [hidden]="!UserRegRef.controls['password'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+                   It must contains atleast 6 characters
+                </span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact: </label>
+                        <input type="tel" class="form-control" formControlName="contact" /><br/>
+                        <div *ngIf="UserRegRef.controls['contact'].invalid && 
+            (UserRegRef.controls['contact'].dirty || UserRegRef.controls['contact'].touched)">
+                            <span [hidden]="!UserRegRef.controls['contact'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        Contact is Required 
                 </span>
                             <span [hidden]="!UserRegRef.controls['contact'].errors?.['maxlength']" style="color:rgb(187, 255, 0)">
                     It must be 10 numbers only
@@ -115,47 +118,43 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Image: </label>
-                        <input type="text" class="form-control" formControlName="img" /><br/>
-                        <div *ngIf="UserRegRef.controls['img'].invalid && 
-            (UserRegRef.controls['img'].dirty || UserRegRef.controls['img'].touched)">
-                            <span [hidden]="!UserRegRef.controls['img'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        Image is Required 
+                        <label>Gender: </label>
+                        <input type="text" class="form-control" formControlName="gender" /><br/>
+                        <div *ngIf="UserRegRef.controls['gender'].invalid && 
+            (UserRegRef.controls['gender'].dirty || UserRegRef.controls['gender'].touched)">
+                            <span [hidden]="!UserRegRef.controls['gender'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        Gender is Required 
                 </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Token: </label>
-                        <input type="text" class="form-control" formControlName="token" /><br/>
+                        <label>Address: </label>
+                        <input type="text" class="form-control" formControlName="address" /><br/>
                         <div *ngIf="UserRegRef.controls['address'].invalid && 
-            (UserRegRef.controls['token'].dirty || UserRegRef.controls['token'].touched)">
-                            <span [hidden]="!UserRegRef.controls['token'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        Token is Required 
+            (UserRegRef.controls['address'].dirty || UserRegRef.controls['address'].touched)">
+                            <span [hidden]="!UserRegRef.controls['address'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        Address is Required 
                 </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Password: </label>
-                        <input type="password" class="form-control" formControlName="password" /><br/>
-                        <div *ngIf="UserRegRef.controls['password'].invalid && 
-            (UserRegRef.controls['user`password'].dirty || UserRegRef.controls['userpassword'].touched)">
-                            <span [hidden]="!UserRegRef.controls['userpassword'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Password is Required 
-                    </span>
-                            <span [hidden]="!UserRegRef.controls['userpassword'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
-                       It must contains atleast 6 characters
-                    </span>
+                        <label>City: </label>
+                        <input type="text" class="form-control" formControlName="city" /><br/>
+                        <div *ngIf="UserRegRef.controls['city'].invalid && 
+            (UserRegRef.controls['city'].dirty || UserRegRef.controls['city'].touched)">
+                            <span [hidden]="!UserRegRef.controls['city'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        City is Required 
+                </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>UN </label>
-                        <input type="text" class="form-control" formControlName="userun" /><br/>
-                        <div *ngIf="UserRegRef.controls['userun'].invalid && 
-            (UserRegRef.controls['userun'].dirty || UserRegRef.controls['userun'].touched)">
-                            <span [hidden]="!UserRegRef.controls['userun'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            UN is Required 
-                    </span>
-
+                        <label>State: </label>
+                        <input type="text" class="form-control" formControlName="state" /><br/>
+                        <div *ngIf="UserRegRef.controls['state'].invalid && 
+            (UserRegRef.controls['state'].dirty || UserRegRef.controls['state'].touched)">
+                            <span [hidden]="!UserRegRef.controls['state'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                        State is Required 
+                </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -171,4 +170,4 @@
             </div>
         </div>
     </div>
-</div>
+    < </div>

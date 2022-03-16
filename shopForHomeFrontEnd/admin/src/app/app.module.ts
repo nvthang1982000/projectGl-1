@@ -18,7 +18,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { SearchFilterPipe } from './stock-report/SearchPipes/search-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SearchFilterPipe
 
   ],
+  
   imports: [
     BrowserModule,
-    AppRoutingModule,ReactiveFormsModule,FormsModule
+    AppRoutingModule,ReactiveFormsModule,FormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
