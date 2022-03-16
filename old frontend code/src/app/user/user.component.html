@@ -1,174 +1,175 @@
-<hr/>
+ 
 <div class="content">
-    <h3 align="center">Hii !! User want to be Login or Register</h3>
+    <h3 align="center">Hey!! User want to Login or Register</h3>
+    
+     
+        <div class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+         <h4 style="color: aliceblue;">User Login</h4>
+         <br>
+         <br>
 
-    <div class="container login-container">
-        <div class="row">
-            <div class="col-md-6 login-form-1">
-                <h3 style="color: antiquewhite;">User Login</h3>
-                <br>
-                <br>
-
-                <form [formGroup]="UserLoginReference" (ngSubmit)="userLogin()">
-                    <div class="form-group">
-                        <label style="color: rgb(75, 142, 201);">Email: </label>
-                        <input type="email" class="form-control" formControlName="useremail" /><br/>
-                        <div *ngIf="UserLoginReference.controls['useremail'].invalid && 
-                (UserLoginReference.controls['useremail'].dirty || UserLoginReference.controls['useremail'].touched)">
-                            <span [hidden]="!UserLoginReference.controls['useremail'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Emali ID is Required 
-                    </span>
-                            <span [hidden]="!UserLoginReference.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 255, 0)">
-                       It must be match with pattern (alphabets + numbers + @gmail.com)
-                    </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label style="color: aliceblue;">Password: </label>
-                        <input type="password" class="form-control" formControlName="password" /><br/>
-                        <div *ngIf="UserLoginReference.controls['password'].invalid && 
-                (UserLoginReference.controls['password'].dirty || UserLoginReference.controls['password'].touched)">
-                            <span [hidden]="!UserLoginReference.controls['password'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Password is required
-                    </span>
-                            <span [hidden]="!UserLoginReference.controls['password'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
-                        Atleast Contains 6 characters
-                    </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-light" value="Login" [disabled]="!UserLoginReference.valid" /> &nbsp;
-
-                        <input type="reset" class="btn btn-light" value="Reset" />
-
-                    </div>
-                </form>
-
-                <br/>
-                <span style="color: rgb(23, 96, 160);"> {{LogUser}}</span>
-            </div>
-
-            <hr/>
-
-            <br/>
-
-            <div class="col-md-6 login-form-2">
-                <div class="login-logo">
-                    <img src="https://." alt="" />
-                </div>
-                <h4>User Register</h4>
-                <br>
-                <br>
-
-                <form [formGroup]="UserRegisterReference" (ngSubmit)="userRegister()">
-                    <div class="form-group">
-                        <label>UserFullName: </label>
-                        <input type="text" class="form-control" formControlName="userName" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['userName'].invalid && 
-            (UserRegisterReference.controls['userName'].dirty || UserRegisterReference.controls['userName'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['userfullname'].errors?.['required']" style="color:rgb(192, 124, 46)">
-                        UserName is Required 
-                </span>
-                            <span [hidden]="!UserRegisterReference.controls['userName'].errors?.['minlength']" style="color:rgb(212, 122, 18)">
-                   It must contains atleast 6 characters
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Address: </label>
-                        <input type="text" class="form-control" formControlName="userAddress" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['userAddress'].invalid && 
-                (UserRegisterReference.controls['userAddress'].dirty || UserRegisterReference.controls['userAddress'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['address'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Address is Required 
-                    </span>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email: </label>
-                        <input type="email" class="form-control" formControlName="useremail" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['useremail'].invalid && 
-                (UserRegisterReference.controls['useremail'].dirty || UserRegisterReference.controls['useremail'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['useremail'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Emali ID is Required 
-                    </span>
-                            <span [hidden]="!UserRegisterReference.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 255, 0)">
-                       It must be match with pattern (alphabets + numbers + @gmail.com)
-                    </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>phone: </label>
-                        <input type="tel" class="form-control" formControlName="userphone" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['userphone'].invalid && 
-            (UserRegisterReference.controls['userphone'].dirty || UserRegisterReference.controls['userphone'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['userphone'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        phone number is Required 
-                </span>
-                            <span [hidden]="!UserRegisterReference.controls['contact'].errors?.['maxlength']" style="color:rgb(187, 255, 0)">
-                    It must be 10 numbers only
-                 </span>
-                            <span [hidden]="!UserRegisterReference.controls['contact'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
-                    It must be 10 numbers only
-                 </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Image: </label>
-                        <input type="text" class="form-control" formControlName="img" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['img'].invalid && 
-            (UserRegisterReference.controls['img'].dirty || UserRegisterReferences.controls['img'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['img'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        Image is Required 
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Token: </label>
-                        <input type="text" class="form-control" formControlName="token" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['address'].invalid && 
-            (UserRegisterReference.controls['token'].dirty || UserRegisterReference.controls['token'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['token'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                        Token is Required 
-                </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Password: </label>
-                        <input type="password" class="form-control" formControlName="password" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['password'].invalid && 
-            (UserRegisterReference.controls['user`password'].dirty || UserRegisterReference.controls['userpassword'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['userpassword'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            Password is Required 
-                    </span>
-                            <span [hidden]="!UserRegisterReference.controls['userpassword'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
-                       It must contains atleast 6 characters
-                    </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>UN </label>
-                        <input type="text" class="form-control" formControlName="userun" /><br/>
-                        <div *ngIf="UserRegisterReference.controls['userun'].invalid && 
-            (UserRegisterReference.controls['userun'].dirty || UserRegRef.controls['userun'].touched)">
-                            <span [hidden]="!UserRegisterReference.controls['userun'].errors?.['required']" style="color:rgb(145, 255, 0)">
-                            UN is Required 
-                    </span>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-dark" value="Register" [disabled]="!UserRegRef.valid" /> &nbsp;
-
-
-                        <input type="reset" class="btn btn-dark" value="Reset" />
-                    </div>
-                </form>
-
-                <br/>
-                <span style="color: beige;"> {{RegUser}} </span>
-            </div>
+         
+         <form [formGroup]="UserLogRef" (ngSubmit)="userLogin()">
+            <div class="form-group">
+        <label style="color: aliceblue;">Email: </label>
+        <input type="email" class="form-control" formControlName="useremail" /><br/>
+        <div *ngIf="UserLogRef.controls['useremail'].invalid && 
+        (UserLogRef.controls['useremail'].dirty || UserLogRef.controls['useremail'].touched)">
+            <span [hidden]="!UserLogRef.controls['useremail'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                    Emali ID is Required 
+            </span>
+            <span [hidden]="!UserLogRef.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 255, 0)">
+               It must be match with pattern (alphabets + numbers + @gmail.com)
+            </span>
         </div>
+       </div>
+       <div class="form-group">
+        <label style="color: aliceblue;">Password: </label>
+        <input  type="password" class="form-control" formControlName="password" /><br/>
+        <div *ngIf="UserLogRef.controls['password'].invalid && 
+        (UserLogRef.controls['password'].dirty || UserLogRef.controls['password'].touched)">
+            <span [hidden]="!UserLogRef.controls['password'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                    Password is required
+            </span>
+            <span [hidden]="!UserLogRef.controls['password'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+                Atleast Contains 6 characters
+            </span>
+        </div>
+       </div>
+       <div class="form-group">
+        <input type="submit" class="btn btn-light" value="Login"  [disabled]="!UserLogRef.valid" /> &nbsp;
+       
+        <input type="reset" class="btn btn-light"  value="Reset" />
+       
+       </div>
+        </form>
+
+    <br/>
+    <span style="color: aliceblue;" > {{LogUser}}</span>
+     </div>
+        
+<hr/>
+
+    <br/>
+
+    <div class="col-md-6 login-form-2">
+        <div class="login-logo">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+        </div>
+    <h4>User Register</h4>
+    <br>
+    <br>
+
+    <form [formGroup]="UserRegRef" (ngSubmit)="userRegister()">
+        <div class="form-group">
+        <label>UserFullName: </label>
+        <input type="text" class="form-control" formControlName="userfullname" /><br/>
+        <div *ngIf="UserRegRef.controls['userfullname'].invalid && 
+    (UserRegRef.controls['userfullname'].dirty || UserRegRef.controls['userfullname'].touched)">
+        <span [hidden]="!UserRegRef.controls['userfullname'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                UserFullName is Required 
+        </span>
+        <span [hidden]="!UserRegRef.controls['userfullname'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+           It must contains atleast 6 characters
+        </span>
     </div>
+        </div>
+        <div class="form-group">
+        <label>Email: </label>
+        <input  type="email" class="form-control" formControlName="useremail" /><br/>
+        <div *ngIf="UserRegRef.controls['useremail'].invalid && 
+    (UserRegRef.controls['useremail'].dirty || UserRegRef.controls['useremail'].touched)">
+        <span [hidden]="!UserRegRef.controls['useremail'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                Emali ID is Required 
+        </span>
+        <span [hidden]="!UserRegRef.controls['useremail'].errors?.['pattern']" style="color:rgb(187, 255, 0)">
+           It must be match with pattern (alphabets + numbers + @gmail.com)
+        </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <label>Password: </label>
+        <input type="password" class="form-control" formControlName="password" /><br/>
+        <div *ngIf="UserRegRef.controls['password'].invalid && 
+    (UserRegRef.controls['password'].dirty || UserRegRef.controls['password'].touched)">
+        <span [hidden]="!UserRegRef.controls['password'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                Password is Required 
+        </span>
+        <span [hidden]="!UserRegRef.controls['password'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+           It must contains atleast 6 characters
+        </span>
+        
+    </div>
+        </div>
+        <div class="form-group">
+        <label>Contact: </label>
+        <input type="tel" class="form-control" formControlName="contact" /><br/>
+        <div *ngIf="UserRegRef.controls['contact'].invalid && 
+    (UserRegRef.controls['contact'].dirty || UserRegRef.controls['contact'].touched)">
+        <span [hidden]="!UserRegRef.controls['contact'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                Contact is Required 
+        </span>
+        <span [hidden]="!UserRegRef.controls['contact'].errors?.['maxlength']" style="color:rgb(187, 255, 0)">
+            It must be 10 numbers only
+         </span>
+        <span [hidden]="!UserRegRef.controls['contact'].errors?.['minlength']" style="color:rgb(187, 255, 0)">
+            It must be 10 numbers only
+         </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <label>Gender: </label>
+        <input type="text" class="form-control" formControlName="gender" /><br/>
+        <div *ngIf="UserRegRef.controls['gender'].invalid && 
+    (UserRegRef.controls['gender'].dirty || UserRegRef.controls['gender'].touched)">
+        <span [hidden]="!UserRegRef.controls['gender'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                Gender is Required 
+        </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <label>Address: </label>
+        <input type="text" class="form-control" formControlName="address" /><br/>
+        <div *ngIf="UserRegRef.controls['address'].invalid && 
+    (UserRegRef.controls['address'].dirty || UserRegRef.controls['address'].touched)">
+        <span [hidden]="!UserRegRef.controls['address'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                Address is Required 
+        </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <label>City: </label>
+        <input type="text"  class="form-control" formControlName="city" /><br/>
+        <div *ngIf="UserRegRef.controls['city'].invalid && 
+    (UserRegRef.controls['city'].dirty || UserRegRef.controls['city'].touched)">
+        <span [hidden]="!UserRegRef.controls['city'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                City is Required 
+        </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <label>State: </label>
+        <input type="text" class="form-control"  formControlName="state" /><br/>
+        <div *ngIf="UserRegRef.controls['state'].invalid && 
+    (UserRegRef.controls['state'].dirty || UserRegRef.controls['state'].touched)">
+        <span [hidden]="!UserRegRef.controls['state'].errors?.['required']" style="color:rgb(145, 255, 0)">
+                State is Required 
+        </span>
+    </div>
+        </div>
+        <div class="form-group">
+        <input type="submit" class="btn btn-dark"  value="Register" [disabled]="!UserRegRef.valid" /> &nbsp;
+        
+        
+        <input type="reset" class="btn btn-dark"  value="Reset" />
+        </div>
+        </form>
+
+        <br/>
+       <span style="color: beige;"> {{RegUser}} </span>
+    </div>
+        </div>
+     </div>
 </div>

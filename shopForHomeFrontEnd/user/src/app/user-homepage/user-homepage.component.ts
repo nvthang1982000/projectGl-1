@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class UserHomepageComponent implements OnInit {
 
   constructor(public route:Router,) { }
-  username;
+  username: any;
   ngOnInit(): void {
   }
   addToCart()

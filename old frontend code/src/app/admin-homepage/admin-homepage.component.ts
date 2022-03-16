@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from '../product';
+import { Product } from '../products';
 import { ProductService } from '../product.service';
-import { UserEntity } from '../user-entity';
-import { UserService } from '../user.service';
+import { UserEntity } from '../user/user-entity';
+import { UserService } from '../user/user-homepage/user.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-admin-homepage',
-  templateUrl: './admin-homepage.component.html',
+  templateUrl:'/admin-homepage.component.html',
   styleUrls: ['./admin-homepage.component.css']
 })
 export class AdminHomepageComponent implements OnInit {
@@ -36,7 +38,7 @@ export class AdminHomepageComponent implements OnInit {
   pname:string="";
   pdesc:string="";
   pimage:string="";
-  constructor(public route:Router,public Userservice:UserService,public prodSer:ProductService) { }
+  constructor(public route:Router,public UsServ:UserService,public prodSer:ProductService) { }
 
   ngOnInit(): void {
     let res = sessionStorage.getItem("adname");
@@ -56,17 +58,17 @@ export class AdminHomepageComponent implements OnInit {
    this.route.navigate(["stockreport"])
  }
  getUsers(): void{
-  this.UsServ.getAllUsers().subscribe((res: UserEntity[])=>this.retrieveUsers=res);
+  this.UsServ['getAllUsers']().subscribe((res: UserEntity[])=>this.retrieveUsers=res);
 }
 
 storeUser(UserRef:NgForm){
   
-  this.UsServ.storeUser(UserRef.value).subscribe((res: string)=>this.storeUs=res,(error: any)=>console.log(error),()=>this.getUsers());  
+  this.UsServ['storeUser'](UserRef.value).subscribe((res: string)=>this.storeUs=res,(error: any)=>console.log(error),()=>this.getUsers());  
   UserRef.reset();
 }
 deleteUser(pid:number){
   
-  this.UsServ.deleteUserInfo(pid).
+  this.UsServ['deleteUserInfo'](pid).
   subscribe((res: string)=>this.deleteUs=res,(error: any)=>console.log(error),()=>this.getUsers());
 }
 
@@ -84,7 +86,7 @@ updateUser(user:UserEntity){
 
 updateUserDetails() {
   let user ={"id":this.uid,"userfullname":this.userfullname,"contact":this.contact,"gender":this.gender,"address":this.address,"city":this.city,"state":this.state}
-  this.UsServ.updateUserInfo(user).subscribe((result: string)=>this.updateUs=result,
+  this.UsServ['updateUserInfo'](user).subscribe((result: string)=>this.updateUs=result,
     (  error: any)=>console.log(error),
   ()=>{
   this.getUsers();
