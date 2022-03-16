@@ -5,17 +5,22 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(
     name ="product.getAllProduct",
-    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date group by ID_pro"
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and p.Flag_0_1!=2  group by ID_pro"
 )
 
 @NamedQuery(
     name ="product.getProductDetail",
-    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and ID_pro=:param group by ID_pro"
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and ID_pro=:param  and p.Flag_0_1!=2 group by ID_pro"
+)
+
+@NamedQuery(
+    name ="product.getAllProductByCategory",
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and p.ID_pro in(select ProductID_pro from product_categories where CategoriesID_Cat=:id)and p.Flag_0_1=2   group by ID_pro"
 )
 
 @NamedQuery(
     name ="product.search",
-    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and Pro_name like '%:key%' group by ID_pro"
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and p.Pro_name like '%:Pro_name%' and p.Flag_0_1!=2 group by ID_pro"
 )
 public class product {
     @Id
@@ -23,8 +28,10 @@ public class product {
     private int ID_pro;
     private String Pro_name;
     private int Left_Quantity;
+    @Transient
     private int Price;
-    private String Flag;
+    private String Flag_0_1;
+    @Column(name="SupplierID_Supplier")
     private String SupplierID;
     @Transient
     private String image;
@@ -71,11 +78,11 @@ public class product {
     }
 
     public String getFlag() {
-        return this.Flag;
+        return this.Flag_0_1;
     }
 
     public void setFlag(String Flag) {
-        this.Flag = Flag;
+        this.Flag_0_1 = Flag;
     }
 
     public String getSupplierID() {
