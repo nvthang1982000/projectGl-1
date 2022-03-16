@@ -4,6 +4,7 @@ import com.hcl.productManagement.rep.*;
 import com.hcl.productManagement.model.product;
 import com.hcl.productManagement.model.wishlist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,19 @@ public class systemService {
     private final Path rootLocation;
     public List<product> SearchProduct(String key)
     {
-        //TODO-get search réuit
-            return null;
+        List<product> products =new ArrayList<product>();
+        //TO-get product detail
+       for (String[] a : rep.search(key)) {
+           product p=new product();
+           p.setID_pro(Integer.parseInt(a[0]));
+           p.setPro_name(a[1]);
+           p.setPrice(Integer.parseInt(a[2]));
+           p.setImage(a[3]);
+           p.setLeft_Quantity(Integer.parseInt(a[4]));
+
+           products.add(p);
+       } 
+        return products;
     }
 
 

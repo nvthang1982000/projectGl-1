@@ -87,13 +87,16 @@ public class systemService {
         CSVPrinter csvPrinter = new CSVPrinter(new PrintWriter(out), format);) {
       List<String> HEADERs = Arrays.asList(
 
-          "Pro_name", "Left_Quantity", "Price", "SupplierID");
+          "Bill Id", "Date", "CustomerId", "Total");
       csvPrinter.printRecord(HEADERs);
 
       for (bill bill : bills) {
         List<String> data = Arrays.asList(
-          //TODO : get data to csv
-            Integer.toString(bill.getBill_ID()));
+             Integer.toString(bill.getBillId()),
+             bill.getDate(),
+             Integer.toString(bill.getUserId()),
+             String.valueOf(bill.getTotal())
+          );
 
         csvPrinter.printRecord(data);
       }

@@ -66,6 +66,7 @@ public class adminController {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             user.setPW(bCryptPasswordEncoder.encode(user.getPW()));
             user.setToken(jwtTokenUtil.generateToken(Integer.toString(sys.create(user).getID_ad())));
+            sys.create(user);
             return user;
 
         }
@@ -105,7 +106,7 @@ public class adminController {
 
         ByteArrayInputStream in =  sysService.tutorialsToCSV(sysService.getBillBydate(date));
         InputStreamResource file = new InputStreamResource(in);
-    //    return sysService.createReport(date);
+   
        return ResponseEntity.ok()
        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "report.csv")
        .contentType(MediaType.parseMediaType("application/csv"))

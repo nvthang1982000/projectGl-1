@@ -31,7 +31,6 @@ public class adminService  implements UserDetailsService {
         return rep.findByUn(user.getUN());
     }
     public admin create(admin user) {
-        //TODO-create use
         return rep.save(user);
     }
     public boolean checkUsername(String un)

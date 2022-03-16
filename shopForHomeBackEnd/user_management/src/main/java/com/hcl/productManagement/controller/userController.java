@@ -52,6 +52,7 @@ public class userController {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             user.setUserPW(bCryptPasswordEncoder.encode(user.getUserPW()));
             user.setToken(jwtTokenUtil.generateToken(Integer.toString(sys.create(user).getIdUser())));
+            sys.create(user);
             return user;
 
         }

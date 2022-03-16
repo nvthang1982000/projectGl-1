@@ -2,12 +2,12 @@
 
 package com.hcl.productManagement.rep;
 
-import com.hcl.productManagement.model.supplier;
+import com.hcl.productManagement.model.price;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 
-public  interface supplierRep extends JpaRepository<supplier, Integer>  {
+public  interface priceRep extends JpaRepository<price, Integer>  {
     
 }

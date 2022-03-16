@@ -4,7 +4,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hcl.productManagement.config.JwtTokenUtil;
-import com.hcl.productManagement.model.product;
 import com.hcl.productManagement.model.wishlist;
 import com.hcl.productManagement.service.*;
 import org.hibernate.cfg.Configuration; 
@@ -24,11 +23,7 @@ public class systemController {
     systemService sys;
     @Autowired
 	private JwtTokenUtil jwtTokenUtil;
-    @GetMapping("search")
-    public List<product> productDetail(@RequestParam("key")  String key) {
-        return sys.SearchProduct(key);
-    }
-
+  
     @PostMapping("auth/wishList")
     public void addWishList(HttpServletRequest request,@RequestParam("productId") int id) {
         String token = request.getHeader("authorization");

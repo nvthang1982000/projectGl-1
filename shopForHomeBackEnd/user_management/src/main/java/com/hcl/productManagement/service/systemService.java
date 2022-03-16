@@ -1,7 +1,6 @@
 package com.hcl.productManagement.service;
 
 import com.hcl.productManagement.rep.*;
-import com.hcl.productManagement.model.product;
 import com.hcl.productManagement.model.wishlist;
 
 import java.util.List;
@@ -15,9 +14,7 @@ import java.io.InputStream;
 import java.nio.file.*;
 @Service
 public class systemService {
-    @Autowired
-    productRep rep;
-
+  
     @Autowired
     wishlistRep wishrep;
     systemService() {
@@ -27,11 +24,7 @@ public class systemService {
     }
 
     private final Path rootLocation;
-    public List<product> SearchProduct(String key)
-    {
-        //TODO-get search réuit
-            return null;
-    }
+
 
     public void addWishList(String idUser,int productId) {
         wishlist wl=new wishlist();

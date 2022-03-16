@@ -5,7 +5,17 @@ import javax.persistence.*;
 @Entity
 @NamedQuery(
     name ="product.getAllProduct",
-    query = "select p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date group by ID_pro"
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date group by ID_pro"
+)
+
+@NamedQuery(
+    name ="product.getProductDetail",
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and ID_pro=:param group by ID_pro"
+)
+
+@NamedQuery(
+    name ="product.search",
+    query = "select  p.ID_pro, p.Pro_name, a.Price_af_dis, GROUP_CONCAT(m.Path) as images ,p.Left_Quantity from product p join price a on p.ID_pro = a.ProductID_pro  join image m on p.ID_pro = m.ProductID_pro where sysdate() between a.Start_date and a.End_Date and Pro_name like '%:key%' group by ID_pro"
 )
 public class product {
     @Id
