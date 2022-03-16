@@ -1,10 +1,10 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Product } from '../products';
-import { ProductService } from '../product.service';
-import { FormsModule } from '@angular/forms';
-
+import { Component,NgModule,OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { Product } from "../products";
+import { ProductService } from "../product.service";
+import { UserEntity } from "../service/user-entity/user-entity.service";
+import { UserServiceService } from "../service/user-service/user-service.service";
 
 @Component({
   selector: 'app-admin-homepage',
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AdminHomepageComponent implements OnInit {
   adminname:string="";
-
+  retrieveUsers:Array<UserEntity>=[];
   products:Array<Product>=[];
   storeUs:string="";
   storeMsg:string="";
@@ -36,7 +36,7 @@ export class AdminHomepageComponent implements OnInit {
   pname:string="";
   pdesc:string="";
   pimage:string="";
-  constructor(public route:Router,public UsServ:UserService,public prodSer:ProductService) { }
+  constructor(public route:Router,public UsServ:UserServiceService,public prodSer:ProductService) { }
 
   ngOnInit(): void {
     let res = sessionStorage.getItem("adname");
@@ -56,18 +56,18 @@ export class AdminHomepageComponent implements OnInit {
    this.route.navigate(["stockreport"])
  }
  getUsers(): void{
-  this.UsServ['getAllUsers']().subscribe((res: UserEntity[])=>this.retrieveUsers=res);
+  this.UsServ.getAllUsers().subscribe((res: any)=>this.retrieveUsers=res);
 }
 
 storeUser(UserRef:NgForm){
   
-  this.UsServ['storeUser'](UserRef.value).subscribe((res: string)=>this.storeUs=res,(error: any)=>console.log(error),()=>this.getUsers());  
+  this.UsServ.storeUser(UserRef.value).subscribe((res: any)=>this.storeUs=res,(error: any)=>console.log(error),()=>this.getUsers());  
   UserRef.reset();
 }
 deleteUser(pid:number){
   
-  this.UsServ['deleteUserInfo'](pid).
-  subscribe((res: string)=>this.deleteUs=res,(error: any)=>console.log(error),()=>this.getUsers());
+  this.UsServ.deleteUserInfo(pid).
+  subscribe((res: any)=>this.deleteUs=res,(error: any)=>console.log(error),()=>this.getUsers());
 }
 
 updateUser(user:UserEntity){
@@ -84,7 +84,7 @@ updateUser(user:UserEntity){
 
 updateUserDetails() {
   let user ={"id":this.uid,"userfullname":this.userfullname,"contact":this.contact,"gender":this.gender,"address":this.address,"city":this.city,"state":this.state}
-  this.UsServ['updateUserInfo'](user).subscribe((result: string)=>this.updateUs=result,
+  this.UsServ.updateUserInfo(user).subscribe((result: any)=>this.updateUs=result,
     (  error: any)=>console.log(error),
   ()=>{
   this.getUsers();
