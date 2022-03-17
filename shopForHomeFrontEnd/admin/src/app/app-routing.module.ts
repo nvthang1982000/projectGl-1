@@ -9,7 +9,9 @@ const routes: Routes = [
   {path:"adminactivity",component:AdminOperationComponent},
   {path:"adminhome",component:AdminHomepageComponent},
   {path:'ecommerce',component:EcommerceComponent},
-  {path:"stockreport",component:StockReportComponent}
+  {path:"stockreport",component:StockReportComponent},
+  {path:"login",component:AdminOperationComponent},
+  {path:'', redirectTo:'/login', pathMatch:'full'}
 ];
 
 @NgModule({

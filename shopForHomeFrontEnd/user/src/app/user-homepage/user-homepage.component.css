@@ -16,3 +16,10 @@
 .div-tag {
     text-align: center;
 }
+
+.title-wrap {
+    max-width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
