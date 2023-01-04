@@ -7,20 +7,22 @@ import { AppComponent } from './app.component';
 import { UserOperationComponent } from './user-operation/user-operation.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AddToCartComponent } from './service/add-to-cart/add-to-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserOperationComponent,
     UserHomepageComponent,
-  
+    AddToCartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

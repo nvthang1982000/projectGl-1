@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Hello")
-    this.http.get<Productsearch[]>('http://localhost:')
+    this.http.get<Productsearch[]>('http://localhost:8282/ProductCRUD/retrieveProducts')
       .subscribe((data: Productsearch[]) => {
         this.productsser = data;
         this.allProducts = this.productsser;

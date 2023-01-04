@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" *ngFor="let product of listOfProdects">
+            <div class="card my-2 p-3">
+                <div class="img-responsive" style="width: 200px;height: 150px;">
+                    <img src="{{product.image}}" width="150px" height="100px" /> </div>
+                <p title="{{product.title}}" class="title-wrap">{{product.title }}</p>
+                <p>Price : {{product.price | currency:'INR'}}</p>
+                <div class="m-2">
+                    <button (click)="increment(product)" class="m-2 btn btn-dark">+</button>
+                    <span>{{product.count}}</span>
+                    <button (click)="decrement(product)" class="m-2 btn btn-dark">-</button>
+                    <button class="btn btn-warning">Add to wishlist</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a routerLink="/home" class="btn btn-success">Go to home</a>
+</div>

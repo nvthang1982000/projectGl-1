@@ -11,7 +11,7 @@
 <div class="card" style="width: 20rem; display:inline-block;margin-left:30px;margin-bottom: 100px;" *ngFor="let prod of productsser | searchFilter: searchTerm; index as i">
     <div style="display:flex; height:18rem;">
 
-        <img src=c lass="card-img-top" alt="..." />
+        <img src={{prod.pimage}} class="card-img-top" alt="..." />
     </div>
     <div class="card-body">
         <h6> Product Name:</h6>

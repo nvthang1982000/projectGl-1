@@ -1,13 +1,50 @@
-<hr/>
+<hr />
 <div>
     <hr>
     <h3 align="center" style="color: rgb(125, 250, 114);">User Home Page</h3>
     <hr>
-    <div align="right"><input type="button" class="btn btn-primary" value="logout" (click)="userlogout()" />&nbsp; &nbsp;
-        <input type="button" class="btn btn-primary" value="Add To Cart" (click)="addToCart()" /></div>
+    <div align="right">
+        <a routerLink="/add-to-cart"> <span class="p-2">selected Item : {{selectedProdecuts.length}}</span></a>
+        <input type="button" class="btn btn-primary" value="logout" (click)="userlogout()" />&nbsp; &nbsp;
+        <!-- <input type="button" class="btn btn-primary" value="Add To Cart" (click)="addToCart()" /> -->
+    </div>
     <h3 align="center">Welcome User, {{username}}</h3>
     <br><br>
     <!-- <app-search></app-search> -->
-    <br/><br/><br/>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="p-2">Sort by </label>
+                <select [(ngModel)]="soryBy" (change)="sorting()">
+                    <option selected disabled value=""> Select an option</option>
+                    <option value="low">Low to high</option>
+                    <option value="high">high to low</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="p-2">category </label>
+                <select [(ngModel)]="category" (change)="categories()">
+                    <option selected disabled value=""> Select an option</option>
+                    <option value="women's clothing">women's clothing</option>
+                    <option value="men's clothing">men's clothing</option>
+                    <option value="jewelery">jewelery</option>
+                    <option value="electronics">electronics</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3" *ngFor="let product of products">
+                <div class="card my-2 p-3">
+                    <div class="img-responsive" style="width: 200px;height: 150px;">
+                        <img src="{{product.image}}" width="150px" height="100px" />
+                    </div>
+                    <p title="{{product.title}}" class="title-wrap">{{product.title }}</p>
+                    <p>Price : {{product.price | currency:'INR'}}</p>
+                    <button (click)="addToCart(product)" class="btn btn-success">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
